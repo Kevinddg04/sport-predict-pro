@@ -28,13 +28,13 @@ USER appuser
 
 # Variables de entorno por defecto
 ENV PYTHONUNBUFFERED=1
-ENV PORT=8000
+ENV PORT=7860
 
 # Health check para SRE
 HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:${PORT}/health || exit 1
 
-EXPOSE 8000
+EXPOSE 7860
 
 # Usamos Gunicorn con workers de Uvicorn para producción
 CMD gunicorn app.main:app \
