@@ -16,3 +16,4 @@ pydantic-settings
 loguru
 python-multipart
 supabase
+pyarrow
