@@ -10,6 +10,12 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+# Instalar dependencias de sistema necesarias para LightGBM
+USER root
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgomp1 \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN groupadd -r appuser && useradd -r -g appuser appuser
 
 COPY --from=builder /root/.local /home/appuser/.local
