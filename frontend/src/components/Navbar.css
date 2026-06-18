@@ -1,0 +1,111 @@
+.navbar {
+  background: rgba(17, 24, 39, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.logo-icon { font-size: 1.4rem; }
+.logo-accent { color: var(--accent-green); }
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+
+.nav-link:hover { color: var(--text-primary); background: var(--bg-card); }
+
+.nav-link-active { color: var(--accent-green) !important; background: rgba(0,214,143,0.1) !important; }
+
+.navbar-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  animation: pulse-green 2s infinite;
+}
+
+.status-text { font-size: 0.75rem; color: var(--text-muted); }
+
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.navbar-mobile {
+  display: none;
+  flex-direction: column;
+  padding: 0.5rem 2rem 1rem;
+  border-top: 1px solid var(--border);
+  gap: 4px;
+}
+
+.nav-link-mobile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+
+.nav-link-mobile:hover { color: var(--text-primary); background: var(--bg-card); }
+
+@media (max-width: 768px) {
+  .navbar-links, .navbar-status { display: none; }
+  .navbar-toggle { display: flex; margin-left: auto; }
+  .navbar-mobile { display: flex; }
+}

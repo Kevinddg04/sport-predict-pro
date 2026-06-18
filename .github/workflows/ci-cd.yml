@@ -1,0 +1,48 @@
+name: SportPredict CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          
+      - name: Backend Lint & Tests
+        run: |
+          cd backend
+          pip install -r requirements.txt
+          pytest
+          
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          
+      - name: Frontend Build Check
+        run: |
+          cd frontend
+          npm install
+          npm run build
+
+  docker-build:
+    needs: quality-check
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Build Backend Image
+        run: docker build -t sportpredict-backend:latest ./backend
+        
+      - name: Build Frontend Image
+        run: docker build -t sportpredict-frontend:latest ./frontend

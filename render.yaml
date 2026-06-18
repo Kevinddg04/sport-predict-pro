@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: sportpredict-api
+    env: docker
+    plan: free # <--- CRÍTICO: 0 USD
+    region: oregon
+    dockerContext: backend
+    dockerfilePath: Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: sportpredict-db # O pega la URL de Supabase directamente
+          property: connectionString
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      - key: REDIS_URL
+        sync: false # Pega aquí tu URL de Upstash (gratis)
+      - key: SECRET_KEY
+        generateValue: true

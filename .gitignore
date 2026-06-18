@@ -1,0 +1,56 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+.mypy_cache/
+.ruff_cache/
+
+# ===== Virtual Env =====
+venv/
+env/
+.venv/
+.env/
+
+# ===== Environment =====
+.env
+*.env.local
+
+# ===== Data (no commitear datos crudos ni modelos grandes) =====
+backend/data/raw/*.csv
+backend/data/processed/*.parquet
+backend/data/models/*.pkl
+
+# ===== Tests =====
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+
+# ===== IDE =====
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Node / Frontend =====
+node_modules/
+frontend/dist/
+frontend/.env.local
+
+# ===== Docker =====
+*.docker-compose.override.yml
+
+# ===== Logs =====
+*.log
+logs/
